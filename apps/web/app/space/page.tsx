@@ -6,7 +6,10 @@ import {
   SelectValue,
   SelectItem,
   SelectContent,
-} from "../../../../packages/ui/src/components/ui/select";
+  Button,
+  Input,
+  Card,
+} from "@repo/ui";
 
 const page = () => {
   return (
@@ -23,13 +26,13 @@ const page = () => {
             </div>
             <form autoComplete="off">
               <div className="my-5">
-                <label>
+                <label className="mb-4 p-[2px]"> 
                   Space Name <span className="text-red-400">*</span>
                 </label>
-                <input
+                <Input
                   type="text"
                   id="first_name"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400"
                   placeholder="Enter your space name"
                   required
                 />
@@ -38,10 +41,10 @@ const page = () => {
                 <label>
                   Header Title <span className="text-red-400">*</span>
                 </label>
-                <input
+                <Input
                   type="text"
                   id="first_name"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                   placeholder="Enter your space name"
                   required
                 />
@@ -50,10 +53,10 @@ const page = () => {
                 <label>
                   Header Description <span className="text-red-400">*</span>
                 </label>
-                <input
+                <Input
                   type="text"
                   id="first_name"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                   placeholder="Enter your space name"
                   required
                 />
@@ -81,19 +84,3 @@ const page = () => {
 
 export default page;
 
-const Forms = () => {
-  return (
-    <input
-      type="text"
-      className={`flex h-10 w-[200px] border-none bg-gray-50 dark:bg-zinc-800 text-black dark:text-white shadow-input rounded-md px-3 py-2 text-sm  file:border-0 file:bg-transparent 
-      file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 
-      focus-visible:outline-none focus-visible:ring-[2px]  focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600
-      disabled:cursor-not-allowed disabled:opacity-50
-      dark:shadow-[0px_0px_1px_1px_var(--neutral-700)]
-      grou
-      p-hover/input:shadow-none transition duration-400
-      `}
-      placeholder="Add text"
-    />
-  );
-};
