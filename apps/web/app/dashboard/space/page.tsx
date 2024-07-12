@@ -1,9 +1,8 @@
 "use client";
 
-import { Button } from "@repo/ui/button";
+import { Button } from "@repo/ui";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
 
 const page = () => {
   const { push } = useRouter();
@@ -24,7 +23,7 @@ const page = () => {
           text="Create space"
           variant="danger"
           className="px-8 py-2 mt-8 bg-black text-white text-sm rounded-md font-semibold hover:bg-black/[0.8] hover:shadow-lg"
-          onClick={() => push(`/space/${uuidv4()}}`)}
+          onClick={() => push(`/space`)}
         />
       </div>
     </div>
