@@ -1,9 +1,10 @@
-"use client";
+// "use client";
 
 import { ReactNode } from "react";
 import { cn } from "../utils";
-import "../src/style.css";
 // import { LoadingSpinner } from "./icons";
+import "./style.css"
+
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
@@ -26,15 +27,11 @@ export function Button({
       // if onClick is passed, it's a "button" type, otherwise it's being used in a form, hence "submit"
       type={props.onClick ? "button" : "submit"}
       onClick={props.onClick}
-      className={cn(
-        "group flex h-10 w-full items-center justify-center space-x-2 rounded-md border px-4 text-sm transition-all focus:outline-none",
-        props.className
-      )}
-      disabled={props.disabled || loading}
-      {...props}
+      className={cn(variant == "outline" ? `px-4 py-2 text-black backdrop-blur-sm border border-black rounded-md hover:shadow-[0px_0px_4px_4px_rgba(0,0,0,0.1)] bg-white/[0.2] text-sm transition duration-200 ${props.className}` :  `px-4 py-2 backdrop-blur-sm border border-black rounded-md hover:shadow-[0px_0px_4px_4px_rgba(0,0,0,0.1)] bg-white/[0.2] text-sm transition duration-200 bg-black ${props.className}`)}
+      // {...props}
     >
       {/* {loading ? <LoadingSpinner /> : icon ? icon : null} */}
-      <p className="text-red-300">{text}</p>
+      <p className={variant == "outline" ? "text-black":  `text-white`}>{text}</p>
       {shortcut && (
         <kbd className="hidden rounded bg-zinc-700 px-2 py-0.5 text-xs font-light text-gray-400 transition-all duration-75 group-hover:bg-gray-100 group-hover:text-gray-500 md:inline-block">
           {shortcut}
@@ -43,3 +40,7 @@ export function Button({
     </button>
   );
 }
+
+{/* <button className="px-4 py-2 text-black backdrop-blur-sm border border-black rounded-md hover:shadow-[0px_0px_4px_4px_rgba(0,0,0,0.1)] bg-white/[0.2] text-sm transition duration-200">
+  Backdrop blur
+</button> */}
