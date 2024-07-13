@@ -11,7 +11,8 @@ module.exports = {
 
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
-    "../packages/**/*.{ts,tsx,html,stories.tsx}",
+    "../packages/**/*.{ts,tsx,html,stories.tsx}",,
+    "../../packages/ui/**/*{.js,.ts,.jsx,.tsx}",
   ],
   theme: {
     container: {

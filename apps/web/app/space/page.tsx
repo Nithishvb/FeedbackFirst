@@ -1,15 +1,7 @@
 "use client";
 
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectItem,
-  SelectContent,
-  Button,
-  Input,
-  Card,
-} from "@repo/ui";
+import { Input, Label } from "@repo/ui";
+import SelectAnimate from "../../../../packages/ui/src/SelectAnimate";
 
 const page = () => {
   return (
@@ -26,9 +18,7 @@ const page = () => {
             </div>
             <form autoComplete="off">
               <div className="my-5">
-                <label className="mb-4 p-[2px]"> 
-                  Space Name <span className="text-red-400">*</span>
-                </label>
+                <Label text="Space Name" required={true} />
                 <Input
                   type="text"
                   id="first_name"
@@ -38,9 +28,7 @@ const page = () => {
                 />
               </div>
               <div className="my-5">
-                <label>
-                  Header Title <span className="text-red-400">*</span>
-                </label>
+                <Label text="Header Title" required={true} />
                 <Input
                   type="text"
                   id="first_name"
@@ -50,9 +38,7 @@ const page = () => {
                 />
               </div>
               <div className="my-5">
-                <label>
-                  Header Description <span className="text-red-400">*</span>
-                </label>
+                <Label text="Header Description" required={true} />
                 <Input
                   type="text"
                   id="first_name"
@@ -61,18 +47,15 @@ const page = () => {
                   required
                 />
               </div>
-              <div>
-                <label>Feedback type</label>
-                <Select>
-                  <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Theme" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="light">Light</SelectItem>
-                    <SelectItem value="dark">Dark</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
-                  </SelectContent>
-                </Select>
+              <div className="flex items-center gap-6">
+                <div>
+                  <Label text="Feedback type" required={true} />
+                  <SelectAnimate />
+                </div>
+                <div>
+                  <Label text="Star rating" required={true} />
+                  {/* <SelectAnimate /> */}
+                </div>
               </div>
             </form>
           </div>
@@ -83,4 +66,3 @@ const page = () => {
 };
 
 export default page;
-
