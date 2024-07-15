@@ -12,45 +12,25 @@ import {
 } from "@repo/ui";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import SelectAnimate from "../../../../packages/ui/src/SelectAnimate";
-import ImageUpload from "../../../../packages/ui/src/ImageUpload";
-
-const formSchema = z.object({
-  spacename: z.string().min(2, {
-    message: "Space name must be at least 2 characters.",
-  }),
-  spacetitle: z.string().min(2, {
-    message: "Space title must be at least 2 characters.",
-  }),
-  spaceDescription: z.string().min(2, {
-    message: "Space title must be at least 2 characters.",
-  }),
-  feedbackType: z.string().min(2, {
-    message: "Space title must be at least 2 characters.",
-  }),
-  starRating: z.string().min(2, {
-    message: "Space title must be at least 2 characters.",
-  }),
-  userlogo: z.string().min(2, {
-    message: "Space title must be at least 2 characters.",
-  }),
-});
+import ImageUpload from "../ImageUpload/ImageUpload";
+import { newSpaceformSchema } from "../../lib/zod/schemas/newSpaceSchema";
+import z from "../../lib/zod";
 
 const NewSpace = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof newSpaceformSchema>>({
+    resolver: zodResolver(newSpaceformSchema),
     defaultValues: {
       spacename: "",
       spacetitle: "",
       spaceDescription: "",
       feedbackType: "",
-      starRating: "",
-      userlogo: ""
+      starRating: undefined,
+      userlogo: undefined,
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: z.infer<typeof newSpaceformSchema>) {
     console.log(values);
   }
 
@@ -66,10 +46,10 @@ const NewSpace = () => {
               <FormControl>
                 <Input
                   type="text"
-                  name="spacename"
                   id="first_name"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400"
                   placeholder="Enter your space name"
+                  {...field}
                 />
               </FormControl>
               <FormMessage />
@@ -85,10 +65,10 @@ const NewSpace = () => {
               <FormControl>
                 <Input
                   type="text"
-                  name="spacetitle"
                   id="first_name"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                   placeholder="Enter your space title"
+                  {...field}
                 />
               </FormControl>
               <FormMessage />
@@ -105,9 +85,9 @@ const NewSpace = () => {
                 <Input
                   type="text"
                   id="first_name"
-                  name="spaceDescription"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                   placeholder="Enter your space description"
+                  {...field}
                 />
               </FormControl>
               <FormMessage />
@@ -149,7 +129,7 @@ const NewSpace = () => {
             <FormItem className="flex flex-col">
               <Label text="Upload logo" required={true} />
               <FormControl>
-                <ImageUpload className="mt-2" />
+                <ImageUpload />
               </FormControl>
               <FormMessage />
             </FormItem>
