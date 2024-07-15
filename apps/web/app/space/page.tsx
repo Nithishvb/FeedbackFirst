@@ -1,8 +1,6 @@
 "use client";
 
-import { Button, Input, Label, Switch, Boxes } from "@repo/ui";
-import SelectAnimate from "../../../../packages/ui/src/SelectAnimate";
-import ImageUpload from "../../../../packages/ui/src/ImageUpload";
+import { Boxes } from "@repo/ui";
 import NewSpace from "../../components/forms/NewSpace";
 
 const page = () => {

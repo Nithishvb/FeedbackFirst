@@ -8,8 +8,8 @@ import {
   SelectContent,
 } from "./components/ui/select";
 
-const SelectAnimate = React.forwardRef<HTMLInputElement>(
-  (): JSX.Element => {
+const SelectAnimate = React.forwardRef<HTMLSelectElement>(
+  (...props): JSX.Element => {
     const radius = 100;
     const [visible, setVisible] = React.useState(false);
 

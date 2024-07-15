@@ -7,6 +7,10 @@ import React from "react";
 const page = () => {
   const { push } = useRouter();
 
+  const handleNavigate = () => {
+    push(`/space`);
+  }
+
   return (
     <div className="flex justify-center items-center">
       <div className="text-center">
@@ -23,7 +27,7 @@ const page = () => {
           text="Create space"
           variant="danger"
           className="px-8 py-2 mt-8 bg-black text-white text-sm rounded-md font-semibold hover:bg-black/[0.8] hover:shadow-lg"
-          onClick={() => push(`/space`)}
+          onClick={handleNavigate}
         />
       </div>
     </div>
