@@ -26,7 +26,7 @@ const NewSpace = () => {
       spaceDescription: "",
       feedbackType: "",
       starRating: undefined,
-      userlogo: undefined,
+      userlogo: "",
     },
   });
 
@@ -36,7 +36,7 @@ const NewSpace = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8" autoComplete={"off"}>
         <FormField
           control={form.control}
           name="spacename"
@@ -94,7 +94,7 @@ const NewSpace = () => {
             </FormItem>
           )}
         />
-        <div className="flex items-center gap-6">
+        <div className="flex lg:items-center gap-6 flex-col lg:flex-row">
           <FormField
             control={form.control}
             name="feedbackType"
@@ -102,7 +102,7 @@ const NewSpace = () => {
               <FormItem>
                 <Label text="Feedback type" required={true} />
                 <FormControl>
-                  <SelectAnimate />
+                  <SelectAnimate {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -113,7 +113,7 @@ const NewSpace = () => {
             name="starRating"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <Label text="Star rating" required={true} />
+                <Label text="Star rating" />
                 <FormControl>
                   <Switch className="mt-2" />
                 </FormControl>
@@ -129,7 +129,7 @@ const NewSpace = () => {
             <FormItem className="flex flex-col">
               <Label text="Upload logo" required={true} />
               <FormControl>
-                <ImageUpload />
+                <ImageUpload {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

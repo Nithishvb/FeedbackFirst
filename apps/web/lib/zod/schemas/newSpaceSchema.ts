@@ -31,11 +31,11 @@ export const newSpaceformSchema = z.object({
     .string({
       required_error: "Feedback type is required",
     })
-    .refine((value) => ["Text", "Video", "Text and video"].includes(value), {
+    .refine((value) => ["Text", "Video", "TextVideo"].includes(value), {
       message: "Feedback type must be 'Text', 'Video', or 'Text and video'",
     }),
   starRating: z.boolean().optional().default(false),
   userlogo: z
-    .instanceof(File)
+    .any()
     .optional()
 });

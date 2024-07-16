@@ -2,7 +2,7 @@ import { cn } from "../utils";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
-  required: boolean;
+  required?: boolean;
 }
 
 export function Label({ text, required, ...props }: ButtonProps) {
