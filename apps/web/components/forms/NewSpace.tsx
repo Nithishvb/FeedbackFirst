@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { useState } from "react";
 import {
   Button,
   Form,
@@ -16,8 +17,11 @@ import SelectAnimate from "../../../../packages/ui/src/SelectAnimate";
 import ImageUpload from "../ImageUpload/ImageUpload";
 import { newSpaceformSchema } from "../../lib/zod/schemas/newSpaceSchema";
 import z from "../../lib/zod";
+// import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const NewSpace = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const form = useForm<z.infer<typeof newSpaceformSchema>>({
     resolver: zodResolver(newSpaceformSchema),
     defaultValues: {
@@ -29,14 +33,35 @@ const NewSpace = () => {
       userlogo: "",
     },
   });
+  const router = useRouter();
 
-  function onSubmit(values: z.infer<typeof newSpaceformSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof newSpaceformSchema>) {
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    };
+    setIsLoading(true);
+    const data = await fetch(
+      `${process.env.NEXT_PUBLIC_URL}/api/spaces`,
+      requestOptions
+    );
+    const response = await data.json();
+    console.log(response.id);
+    setIsLoading(false);
+    router.push(`/dashboard/space/${response.id}`);
+    
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8" autoComplete={"off"}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-8"
+        autoComplete={"off"}
+      >
         <FormField
           control={form.control}
           name="spacename"
@@ -138,7 +163,7 @@ const NewSpace = () => {
 
         <div className="flex justify-between">
           <Button text="Cancel" variant="outline" className="px-8"></Button>
-          <Button text="Create" className="px-8" type="submit"></Button>
+          <Button text="Create" className="px-8 flex gap-2" type="submit" loading={isLoading}></Button>
         </div>
       </form>
     </Form>
