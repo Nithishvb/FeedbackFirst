@@ -10,7 +10,7 @@ export default async function DashboardLayout({
 }) {
   return (
     <DynamicSharedLayout>
-      <div className="full-layout">{children}</div>
+      <div className="full-layout h-screen flex justify-center  ">{children}</div>
     </DynamicSharedLayout>
   );
 }

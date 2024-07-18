@@ -9,6 +9,7 @@ export * from "./SelectAnimate";
 export * from "./components/ui/switch";
 export * from "./BackgroundBoxes";
 export * from "./components/ui/form";
+export * from "./components/ui/dialog";
 
 export * from "./icons";
 
