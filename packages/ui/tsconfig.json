@@ -11,6 +11,6 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
-    ".next/types/**/*.ts"],
+    ".next/types/**/*.ts", "../../apps/web/components/ImageUpload/ImageUpload.tsx", "src/SelectAnimate.tsx"],
   "exclude": ["node_modules", "dist"]
 }

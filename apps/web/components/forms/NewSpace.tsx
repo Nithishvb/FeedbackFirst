@@ -163,7 +163,7 @@ const NewSpace = () => {
 
         <div className="flex justify-between">
           <Button text="Cancel" variant="outline" className="px-8"></Button>
-          <Button text="Create" className="px-8 flex gap-2" type="submit" loading={isLoading}></Button>
+          <Button text="Create" className="px-8 flex gap-2 bg-black text-white" variant="secondary" loading={isLoading}></Button>
         </div>
       </form>
     </Form>
