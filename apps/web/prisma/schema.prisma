@@ -17,3 +17,13 @@ model Space {
   type          String
   isStarRating  Boolean
 }
+
+model Feedbacks {
+  id            String    @id @default(cuid())
+  feedback      String   
+  name          String  
+  email         String
+  image         String
+  rating        Int
+  spaceId       String
+}

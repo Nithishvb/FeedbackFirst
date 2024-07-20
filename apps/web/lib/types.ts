@@ -6,3 +6,12 @@ export interface NewSpaceProps {
   starRating: boolean;
   userlogo?: string;
 }
+
+export interface FeedbackTextProps {
+  name: string;
+  feedback: string;
+  email: string;
+  rating?: number | undefined;
+  userlogo?: string;
+  spaceId: string;
+}

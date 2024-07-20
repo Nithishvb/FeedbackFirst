@@ -17,7 +17,6 @@ import SelectAnimate from "../../../../packages/ui/src/SelectAnimate";
 import ImageUpload from "../ImageUpload/ImageUpload";
 import { newSpaceformSchema } from "../../lib/zod/schemas/newSpaceSchema";
 import z from "../../lib/zod";
-// import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 const NewSpace = () => {
