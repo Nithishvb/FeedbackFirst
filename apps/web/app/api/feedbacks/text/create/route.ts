@@ -5,9 +5,10 @@ import { createTextFeedback } from "../../../../../lib/api/feedback/create-text-
 import { FeedbackFirstApiError } from "../../../../../lib/api/error";
 
 export async function POST(req: NextRequest) {
-  const data = feedbackTextSchema.parse(await parseRequestBody(req));
+  const parseBody = await parseRequestBody(req)
+  const data = feedbackTextSchema.parse(parseBody.data);
   try {
-    const response = await createTextFeedback({ ...data, spaceId: "test" });
+    const response = await createTextFeedback({ ...data, spaceId: parseBody.spaceId });
     return NextResponse.json(response);
   } catch (error: any) {
     throw new FeedbackFirstApiError({

@@ -19,39 +19,52 @@ import { useForm } from "react-hook-form";
 import z from "../../lib/zod";
 import { feedbackTextSchema } from "../../lib/zod/schemas/feedbackTextSchems";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 
-const FeedbackTextForm = () => {
+interface FeedbackTextFormPropTypes {
+  onCloseDialog: () => void;
+}
+
+const FeedbackTextForm = ({ onCloseDialog }: FeedbackTextFormPropTypes) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const form = useForm<z.infer<typeof feedbackTextSchema>>({
     resolver: zodResolver(feedbackTextSchema),
-    defaultValues: {
-      feedback: "",
-      name: "",
-      email: "",
-      userlogo: undefined,
-      rating: 0,
-    },
   });
+  const { reset } = form;
+  const { isSubmitSuccessful }  = form.formState;
+  const params = useParams<{ spacename: string }>();
+
+  useEffect(() => {
+    if(isSubmitSuccessful){
+      reset({
+        name: "",
+        email: "",
+        feedback: "",
+        rating: 0
+      });
+    }
+  }, [isSubmitSuccessful]);
 
   async function onSubmit(values: z.infer<typeof feedbackTextSchema>) {
-    console.log(values);
     const requestOptions = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(values),
+      body: JSON.stringify({
+        data: values,
+        spaceId: params.spacename,
+      }),
     };
     setIsLoading(true);
     const data = await fetch(
       `${process.env.NEXT_PUBLIC_URL}/api/feedbacks/text/create`,
       requestOptions
     );
-    const response = await data.json();
-    console.log(response.id);
+    await data.json();
     setIsLoading(false);
-    // router.push(`/dashboard/space/${response.id}`);
+    onCloseDialog();
   }
 
   return (
@@ -61,9 +74,7 @@ const FeedbackTextForm = () => {
       </DialogHeader>
       <div className="w-16 h-16 my-2 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-4xl font-bold">
         <Image
-          src={
-            ""
-          }
+          src={""}
           alt="User Avatar"
           width={128}
           height={128}
@@ -147,7 +158,12 @@ const FeedbackTextForm = () => {
             )}
           />
           <div className="flex justify-between">
-            <Button text="Cancel" variant="outline" className="px-8"></Button>
+            <Button
+              text="Cancel"
+              variant="outline"
+              className="px-8"
+              onClick={onCloseDialog}
+            ></Button>
             <Button
               text="Send"
               type="submit"

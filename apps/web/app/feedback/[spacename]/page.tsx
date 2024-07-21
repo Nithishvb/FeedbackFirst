@@ -4,8 +4,14 @@ import { Button, Dialog, DialogTrigger } from "@repo/ui";
 import Image from "next/image";
 import Link from "next/link";
 import FeedbackTextForm from "../../../components/feedbackForm/FeedbackTextForm";
+import { useState } from "react";
+import FeedbackThankYouCard from "../../../components/feedbackForm/FeedbackThankYouCard";
 
 export default function page() {
+
+  const [open, setOpen] = useState(false);
+  const [openThankYou, setOpenThankYou] = useState<boolean>(false);
+
   return (
     <div className="flex flex-col min-h-dvh bg-background">
       <header className="px-6 lg:px-6 pt-10 h-14 flex items-center">
@@ -48,9 +54,8 @@ export default function page() {
                 Shoot Your Feedback
               </Button>
             </DialogTrigger>
-            <FeedbackTextForm />
           </Dialog>
-          <Dialog>
+          <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
               <Button
                 text="Type Your Feedback"
@@ -60,7 +65,13 @@ export default function page() {
                 Type Your Feedback
               </Button>
             </DialogTrigger>
-            <FeedbackTextForm />
+            <FeedbackTextForm onCloseDialog={() => {
+              setOpen(false)
+              setOpenThankYou(true);
+            }} />
+          </Dialog>
+          <Dialog open={openThankYou} onOpenChange={setOpenThankYou}>
+            <FeedbackThankYouCard />
           </Dialog>
         </div>
       </main>
