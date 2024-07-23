@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 
-interface StarRatingPropTypes extends React.HTMLAttributes<HTMLInputElement> {};
+interface StarRatingPropTypes extends React.HTMLAttributes<HTMLInputElement> {
+  readonly: boolean;
+  ratingCount?: number;
+};
 
-export default function StarRating({ ...props } : StarRatingPropTypes) {
-  const [rating, setRating] = useState<number>(0);
+export default function StarRating({ readonly , ratingCount ,...props } : StarRatingPropTypes) {
+  const [rating, setRating] = useState<number>(ratingCount ? ratingCount : 0);
   const [hoveredRating, setHoveredRating] = useState<number>(0);
 
   const handleRatingChange = (newRating: number) => {
@@ -22,9 +25,9 @@ export default function StarRating({ ...props } : StarRatingPropTypes) {
             cursor-pointer
             ${star <= rating ? "text-primary" : ""}
           `}
-          onClick={() => handleRatingChange(star)}
-          onMouseEnter={() => setHoveredRating(star)}
-          onMouseLeave={() => setHoveredRating(0)}
+          onClick={() => readonly ? undefined : handleRatingChange(star)}
+          onMouseEnter={() => readonly ? undefined : setHoveredRating(star)}
+          onMouseLeave={() => readonly ? undefined : setHoveredRating(0)}
         >
           <StarIcon className="w-6 h-6" fill={star <= (rating || hoveredRating) ? "#FFB621" : "none"} />
         </span>

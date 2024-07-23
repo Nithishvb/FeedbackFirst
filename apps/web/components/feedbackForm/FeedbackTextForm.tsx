@@ -93,7 +93,7 @@ const FeedbackTextForm = ({ onCloseDialog }: FeedbackTextFormPropTypes) => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <StarRating {...field} />
+                  <StarRating readonly={false} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
