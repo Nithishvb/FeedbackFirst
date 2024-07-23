@@ -13,6 +13,8 @@ export * from "./components/ui/dialog";
 export * from "./components/ui/textarea";
 export * from "./components/ui/card";
 export * from "./components/ui/breadcrumb";
+export * from "./components/ui/drawer";
+export * from "./components/ui/tooltip";
 
 export * from "./icons";
 
