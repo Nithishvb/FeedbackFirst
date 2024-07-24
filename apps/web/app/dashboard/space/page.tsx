@@ -17,7 +17,7 @@ const page = () => {
   };
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-start items-center">
       {loading ? (
         <div className="grid grid-cols-1 gap-6 p-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {[1, 2, 3].map((val, index: number) => (
