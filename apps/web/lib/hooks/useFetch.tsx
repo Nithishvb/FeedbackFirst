@@ -19,10 +19,9 @@ const useFetch = (url: string) => {
 
         const result = await response.json();
         setData(result.data);
+        setLoading(false);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Unknown error");
-      } finally {
-        setLoading(false);
       }
     };
 

@@ -15,6 +15,7 @@ export * from "./components/ui/card";
 export * from "./components/ui/breadcrumb";
 export * from "./components/ui/drawer";
 export * from "./components/ui/tooltip";
+export * from "./components/ui/skeleton";
 
 export * from "./icons";
 
