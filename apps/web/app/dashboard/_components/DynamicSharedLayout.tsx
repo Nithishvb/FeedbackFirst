@@ -26,10 +26,8 @@ const DynamicSharedLayout = ({ children }: { children: React.ReactNode }) => {
         </div>
         <div className="px-3 py-4 overflow-y-auto dark:bg-gray-800">
           <ul className="space-y-2">
-            <li onClick={() => router.push('/dashboard/space')}>
-              <a
-                className="flex cursor-pointer items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
+            <li onClick={() => router.push("/dashboard/space")}>
+              <a className="flex cursor-pointer items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <IconProject />
                 <span className="ms-3 text-[15px]">Projects</span>
               </a>
@@ -81,6 +79,45 @@ const DynamicSharedLayout = ({ children }: { children: React.ReactNode }) => {
                     {/* <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
                   3
                 </span> */}
+                  </Link>
+                </li>
+
+                <li className="font-bold p-2 !mt-5">
+                  <span className="flex-1 ms-1 mt-8 whitespace-nowrap text-[17px] text-gray-500 uppercase">
+                    Embeddings
+                  </span>
+                </li>
+                <li>
+                  <Link
+                    href="text"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <IconCardText />
+                    <span className="flex-1 ms-3 whitespace-nowrap text-[15px]">
+                      React Js
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="video"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <IconCameraVideo />
+                    <span className="flex-1 ms-3 whitespace-nowrap text-[15px]">
+                      Angular
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="video"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <IconCameraVideo />
+                    <span className="flex-1 ms-3 whitespace-nowrap text-[15px]">
+                      Next Js
+                    </span>
                   </Link>
                 </li>
               </>
