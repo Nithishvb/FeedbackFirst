@@ -1,7 +1,13 @@
+"use client";
+
+import HeaderBreadCrumb from "./HeaderBreadCrumb";
+
 const Header = () => {
   return (
     <header className="flex items-center justify-between px-4 py-3 bg-background border-b-2 border-gray-150">
-      <div className="text-m font-medium pl-4">Projects</div>
+      <div className="text-m font-medium pl-4">
+        <HeaderBreadCrumb />
+      </div>
       <CircleHelpIcon className="w-6 h-5 text-muted-foreground cursor-pointer" />
     </header>
   );
