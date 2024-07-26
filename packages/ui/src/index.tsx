@@ -18,5 +18,5 @@ export * from "./components/ui/tooltip";
 export * from "./components/ui/skeleton";
 
 export * from "./icons";
-
+export * from "../utils/index";
 
