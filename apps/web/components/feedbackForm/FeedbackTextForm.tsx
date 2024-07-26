@@ -13,14 +13,14 @@ import {
   FormMessage,
 } from "@repo/ui";
 import Image from "next/image";
-import StarRating from "../starRating/StarRating";
-import ImageUpload from "../ImageUpload/ImageUpload";
+import ImageUpload from "@/components/ImageUpload/ImageUpload";
+import StarRating from "@/components/starRating/StarRating";
 import { useForm } from "react-hook-form";
-import z from "../../lib/zod";
-import { feedbackTextSchema } from "../../lib/zod/schemas/feedbackTextSchems";
+import z from "@/lib/zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import { feedbackTextSchema } from "@/lib/zod/schemas/feedbackTextSchems";
 
 interface FeedbackTextFormPropTypes {
   onCloseDialog: () => void;

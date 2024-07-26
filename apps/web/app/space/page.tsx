@@ -1,7 +1,7 @@
 "use client";
 
+import NewSpace from "@/components/forms/NewSpace";
 import { Boxes } from "@repo/ui";
-import NewSpace from "../../components/forms/NewSpace";
 
 const page = () => {
   return (

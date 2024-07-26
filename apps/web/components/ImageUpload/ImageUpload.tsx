@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import * as React from "react";
-import { cn } from "../../../../packages/ui/utils";
+import { cn } from "@repo/ui";
 import Image from "next/image";
 
 export interface ImageProps

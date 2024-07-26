@@ -1,11 +1,11 @@
 "use client";
 
+import FeedbackTextForm from "@/components/feedbackForm/FeedbackTextForm";
+import FeedbackThankYouCard from "@/components/feedbackForm/FeedbackThankYouCard";
 import { Button, Dialog, DialogTrigger } from "@repo/ui";
 import Image from "next/image";
 import Link from "next/link";
-import FeedbackTextForm from "../../../components/feedbackForm/FeedbackTextForm";
 import { useState } from "react";
-import FeedbackThankYouCard from "../../../components/feedbackForm/FeedbackThankYouCard";
 
 export default function page() {
 

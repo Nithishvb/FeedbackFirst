@@ -1,9 +1,9 @@
+import { FeedbackFirstApiError } from "@/lib/api/error";
+import { createSpace } from "@/lib/api/space/create-space";
+import { fetchSpace } from "@/lib/api/space/fetch-space";
+import { parseRequestBody } from "@/lib/api/utils";
+import { newSpaceformSchema } from "@/lib/zod/schemas/newSpaceSchema";
 import { NextResponse } from "next/server";
-import { parseRequestBody } from "../../../lib/api/utils";
-import { newSpaceformSchema } from "../../../lib/zod/schemas/newSpaceSchema";
-import { createSpace } from "../../../lib/api/space/create-space";
-import { FeedbackFirstApiError } from "../../../lib/api/error";
-import { fetchSpace } from "../../../lib/api/space/fetch-space";
 
 export async function POST(req: Request) {
   const data = newSpaceformSchema.parse(await parseRequestBody(req));

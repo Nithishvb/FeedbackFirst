@@ -66,4 +66,4 @@ const SelectAnimate = React.forwardRef<HTMLInputElement, InputProps>(
   );
 });
 
-export default SelectAnimate;
+export {SelectAnimate};

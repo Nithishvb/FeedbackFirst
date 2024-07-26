@@ -13,11 +13,11 @@ import {
 } from "@repo/ui";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import SelectAnimate from "../../../../packages/ui/src/SelectAnimate";
-import ImageUpload from "../ImageUpload/ImageUpload";
-import { newSpaceformSchema } from "../../lib/zod/schemas/newSpaceSchema";
-import z from "../../lib/zod";
+import ImageUpload from "@/components/ImageUpload/ImageUpload";
 import { useRouter } from "next/navigation";
+import z from "@/lib/zod";
+import { newSpaceformSchema } from "@/lib/zod/schemas/newSpaceSchema";
+import { SelectAnimate } from "@repo/ui"
 
 const NewSpace = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
