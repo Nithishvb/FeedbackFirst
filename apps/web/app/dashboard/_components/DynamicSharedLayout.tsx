@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import React from "react";
-import IconProject from "../../../../../packages/ui/src/icons/project";
 import { useParams, useRouter } from "next/navigation";
-import IconCardText from "../../../../../packages/ui/src/icons/cardtext-icon";
+import IconProject from "../../../../../packages/ui/src/icons/project";
 import IconCameraVideo from "../../../../../packages/ui/src/icons/video-icon";
 import IconHeart from "../../../../../packages/ui/src/icons/favorite-icon";
+import IconCardText from "../../../../../packages/ui/src/icons/cardtext-icon";
 
 const DynamicSharedLayout = ({ children }: { children: React.ReactNode }) => {
   const params = useParams<{ spaceId: string }>();
@@ -41,7 +41,7 @@ const DynamicSharedLayout = ({ children }: { children: React.ReactNode }) => {
                 </li>
                 <li>
                   <Link
-                    href="text"
+                    href={`/dashboard/space/${params.spaceId}/text`}
                     className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
                     <IconCardText />
@@ -53,7 +53,7 @@ const DynamicSharedLayout = ({ children }: { children: React.ReactNode }) => {
                 </span> */}
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     href="video"
                     className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -62,11 +62,8 @@ const DynamicSharedLayout = ({ children }: { children: React.ReactNode }) => {
                     <span className="flex-1 ms-3 whitespace-nowrap text-[15px]">
                       Video
                     </span>
-                    {/* <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
-                  3
-                </span> */}
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link
                     href="favorites"
@@ -89,7 +86,7 @@ const DynamicSharedLayout = ({ children }: { children: React.ReactNode }) => {
                 </li>
                 <li>
                   <Link
-                    href="text"
+                    href={`/dashboard/space/${params.spaceId}/react?code=react`}
                     className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
                     <IconCardText />
@@ -100,7 +97,7 @@ const DynamicSharedLayout = ({ children }: { children: React.ReactNode }) => {
                 </li>
                 <li>
                   <Link
-                    href="video"
+                    href={`/dashboard/space/${params.spaceId}/react?code=angular`}
                     className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
                     <IconCameraVideo />
@@ -111,7 +108,7 @@ const DynamicSharedLayout = ({ children }: { children: React.ReactNode }) => {
                 </li>
                 <li>
                   <Link
-                    href="video"
+                    href={`/dashboard/space/${params.spaceId}/react?code=next`}
                     className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
                     <IconCameraVideo />
