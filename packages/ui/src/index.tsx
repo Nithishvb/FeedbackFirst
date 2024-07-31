@@ -6,6 +6,7 @@ export * from "./button";
 export * from "./input";
 export * from "./label";
 export * from "./SelectAnimate";
+export * from "./InfiniteMovingCards";
 export * from "./components/ui/switch";
 export * from "./BackgroundBoxes";
 export * from "./components/ui/form";

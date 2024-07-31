@@ -12,7 +12,6 @@ const page = () => {
   const { data } = useFetch(
     `${process.env.NEXT_PUBLIC_URL}/api/feedbacks/text/${params.spacename}`
   );
-  console.log(data);
   const result = distributeFeedbacks(data);
 
   return (
