@@ -43,7 +43,7 @@ const page = () => {
                           <div className="relative p-6 space-y-6 leading-none rounded-lg bg-slate-800 ring-1 ring-gray-900/5">
                             <div className="flex items-center space-x-4">
                               <Image
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJEWNw_Bo9DvCUkojUY6S3zYdxapqCxmIJhg&s"
+                                src=""
                                 className="w-12 h-12 bg-center bg-cover border rounded-full"
                                 alt="Kanye West"
                                 height={50}
