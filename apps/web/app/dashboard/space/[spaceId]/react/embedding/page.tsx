@@ -10,7 +10,7 @@ const page = () => {
 
   return (
     <div className="m-6">
-      <div className="text-x font-semibold my-4">
+      <div className="text-xl font-semibold my-6">
         Copy this code snippet and paste it into your project
       </div>
       <div>

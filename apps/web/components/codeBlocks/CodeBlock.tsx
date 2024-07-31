@@ -9,7 +9,7 @@ const CodeBlock = ({ codeSnippet }: { codeSnippet: string }) => {
       theme={dracula}
       customStyle={{
         padding: "10px",
-        width: "100%",
+        width: "75%",
       }}
     />
   );
