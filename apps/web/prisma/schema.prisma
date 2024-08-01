@@ -5,25 +5,36 @@ datasource db {
 }
 
 generator client {
-  provider        = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 model Space {
-  id            String    @id @default(cuid())
-  name          String   
-  title         String  
-  description   String
-  image         String
-  type          String
-  isStarRating  Boolean
+  id           String  @id @default(cuid())
+  name         String
+  title        String
+  description  String
+  image        String
+  type         String
+  isStarRating Boolean
 }
 
 model Feedbacks {
-  id            String    @id @default(cuid())
-  feedback      String   
-  name          String  
-  email         String
-  image         String
-  rating        Int
-  spaceId       String
+  id        String      @id @default(cuid())
+  feedback  String
+  name      String
+  email     String
+  image     String
+  rating    Int
+  spaceId   String
+  Favorites Favorites[]
+}
+
+model Favorites {
+  id         Int       @id @default(autoincrement())
+  userId     Int
+  feedbackId String
+  feedback   Feedbacks @relation(fields: [feedbackId], references: [id])
+  createdAt  DateTime  @default(now())
+
+  @@unique([userId, feedbackId])
 }
