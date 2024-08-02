@@ -6,12 +6,12 @@ import {
 } from "@repo/ui";
 import IconHeart from "../../../../packages/ui/src/icons/favorite-icon";
 
-const AddFavouriteBtn = () => {
+const AddFavouriteBtn = ({ addToFavourites } : { addToFavourites: () => void; }) => {
   return (
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger>
-            <IconHeart className="text-2xl cursor-pointer" />
+            <IconHeart className="text-2xl cursor-pointer" onClick={addToFavourites} />
         </TooltipTrigger>
         <TooltipContent>
           <p>Add to favorites</p>

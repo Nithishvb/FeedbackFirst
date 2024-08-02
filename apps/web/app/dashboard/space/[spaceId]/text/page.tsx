@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   Drawer,
   DrawerContent,
@@ -12,8 +12,11 @@ import useFetch from "@/lib/hooks/useFetch";
 import TextFeedbackCards from "@/components/spaceCards/TextCards";
 import DrawerFeedbackContent from "@/components/spaceCards/DrawerContent";
 import TextCardsLoader from "@/components/SkeletonLoader/TextCardsLoader";
+import { FeedbackTextProps } from "@/lib/types";
 
 const page = () => {
+
+  const [selectedFeedback, setSelectedFeedback] = useState<FeedbackTextProps>();
   const { data, loading } = useFetch(
     `${process.env.NEXT_PUBLIC_URL}/api/feedbacks/text`
   );
@@ -26,12 +29,12 @@ const page = () => {
         data?.map((val) => (
           <Drawer key={val.id} direction="right">
             <DrawerTrigger>
-              <TextFeedbackCards {...val} />
+              <TextFeedbackCards {...val} setSelectedData={setSelectedFeedback} />
             </DrawerTrigger>
             <DrawerContent className="h-screen top-0 right-0 left-auto text-left mt-0 w-[500px] rounded-none">
               <DrawerHeader>
                 <DrawerDescription>
-                  <DrawerFeedbackContent />
+                  <DrawerFeedbackContent selectedFeedback={selectedFeedback} />
                 </DrawerDescription>
               </DrawerHeader>
             </DrawerContent>
