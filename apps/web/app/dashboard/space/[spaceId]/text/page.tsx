@@ -16,10 +16,56 @@ import { FeedbackTextProps } from "@/lib/types";
 
 const page = () => {
 
-  const [selectedFeedback, setSelectedFeedback] = useState<FeedbackTextProps>();
-  const { data, loading } = useFetch(
+  const [selectedFeedback, setSelectedFeedback] = useState<FeedbackTextProps & { id: string }>();
+  const { data, loading , refetch } = useFetch(
     `${process.env.NEXT_PUBLIC_URL}/api/feedbacks/text`
   );
+
+  const addToFavourites = async () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        feedbackId: selectedFeedback?.id,
+      }),
+      redirect: "follow",
+    };
+
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_URL}/api/feedbacks/favourite/create`,
+      requestOptions
+    );
+    const res = await response.json();
+    const feedBack = res.data.filter((e: any) => e.id === selectedFeedback?.id);
+    setSelectedFeedback(feedBack[0]);
+  };
+
+  const removeFromFavorites = async () => {
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        favoriteId: selectedFeedback?.Favorites[0].id,
+      }),
+      redirect: "follow",
+    };
+
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_URL}/api/feedbacks/favourite/remove`,
+      requestOptions
+    );
+    const res = await response.json();
+    console.log(res);
+    const feedBack = res.data.filter((e: any) => e.id === selectedFeedback?.id);
+    setSelectedFeedback(feedBack[0]);
+  }
 
   return (
     <div className="grid grid-cols-1 gap-10 p-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
@@ -34,7 +80,7 @@ const page = () => {
             <DrawerContent className="h-screen top-0 right-0 left-auto text-left mt-0 w-[500px] rounded-none">
               <DrawerHeader>
                 <DrawerDescription>
-                  <DrawerFeedbackContent selectedFeedback={selectedFeedback} />
+                  <DrawerFeedbackContent selectedFeedback={selectedFeedback} addToFavourites={addToFavourites} removeFromFavorites={removeFromFavorites} />
                 </DrawerDescription>
               </DrawerHeader>
             </DrawerContent>

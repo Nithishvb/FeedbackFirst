@@ -1,38 +1,28 @@
 import React from "react";
 import StarRating from "../starRating/StarRating";
 import AddFavouriteBtn from "./AddFavouriteBtn";
-import { FeedbackTextProps } from "@/lib/types";
 
-const DrawerFeedbackContent = ({ selectedFeedback } : { selectedFeedback: FeedbackTextProps & { id: string } }) => {
+interface DrawerFeedbackPropTypes {
+  selectedFeedback: any;
+  addToFavourites: () => void;
+  removeFromFavorites: () => void;
+}
 
-  const addToFavourites = async () => {
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+const DrawerFeedbackContent = ({
+  selectedFeedback, addToFavourites, removeFromFavorites
+}: DrawerFeedbackPropTypes) => {
 
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(
-        {
-          "feedbackId": selectedFeedback.id
-        }
-      ),
-      redirect: "follow"
-    };
-
-    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/feedbacks/favourite/create`, requestOptions);
-    const res = await response.json();
-    console.log(res);
-  }
+   console.log("selected items", selectedFeedback);
 
   return (
     <div className="p-4">
-        <div className="flex justify-between items-center">
-            <StarRating readonly={true} ratingCount={selectedFeedback.rating} />
-            <AddFavouriteBtn addToFavourites={addToFavourites} />
-        </div>
+      <div className="flex justify-between items-center">
+        <StarRating readonly={true} ratingCount={selectedFeedback.rating} />
+        <AddFavouriteBtn
+          addToFavourites={selectedFeedback?.Favorites && selectedFeedback?.Favorites.length === 1 ? removeFromFavorites : addToFavourites}
+          isFavourite={selectedFeedback?.Favorites && selectedFeedback?.Favorites.length === 1}
+        />
+      </div>
       <div className="my-5">
         <h5 className="text-black leading-relaxed text-lg">
           {selectedFeedback.feedback}
@@ -48,7 +38,7 @@ const DrawerFeedbackContent = ({ selectedFeedback } : { selectedFeedback: Feedba
           </div>
           <div>
             <div className="text-sm font-medium text-muted-foreground">
-            {selectedFeedback.email}
+              {selectedFeedback.email}
             </div>
             <div className="text-black font-semibold">{"john@gmail.com"}</div>
           </div>

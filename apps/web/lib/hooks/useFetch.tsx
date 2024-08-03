@@ -7,30 +7,34 @@ const useFetch = (url: string) => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      setError(null);
+  const fetchData = async () => {
+    setLoading(true);
+    setError(null);
 
-      try {
-        const response = await fetch(url);
+    try {
+      const response = await fetch(url);
 
-        if (!response.ok) {
-          throw new Error(`Error: ${response.statusText}`);
-        }
-
-        const result = await response.json();
-        setData(result.data);
-        setLoading(false);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Unknown error");
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
       }
-    };
 
+      const result = await response.json();
+      setData(result.data);
+      setLoading(false);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unknown error");
+    }
+  };
+
+  useEffect(() => {
     fetchData();
   }, [url]);
 
-  return { data, error, loading };
+  const refetch = () => {
+    fetchData();
+  }
+
+  return { data, error, loading , refetch };
 };
 
 export default useFetch;
