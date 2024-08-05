@@ -18,6 +18,6 @@ export async function removefavouriteFeedback(favoriteId: number) {
       id: favoriteId
     }
   });
-  const response = await primsa.feedbacks.findMany();
+  const response = await fetchTextFeedback();
   return response;
 }
