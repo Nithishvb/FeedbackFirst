@@ -6,10 +6,11 @@ interface DrawerFeedbackPropTypes {
   selectedFeedback: any;
   addToFavourites: () => void;
   removeFromFavorites: () => void;
+  isFavourite?: boolean;
 }
 
 const DrawerFeedbackContent = ({
-  selectedFeedback, addToFavourites, removeFromFavorites
+  selectedFeedback, addToFavourites, removeFromFavorites , isFavourite
 }: DrawerFeedbackPropTypes) => {
 
    console.log("selected items", selectedFeedback);
@@ -19,8 +20,8 @@ const DrawerFeedbackContent = ({
       <div className="flex justify-between items-center">
         <StarRating readonly={true} ratingCount={selectedFeedback.rating} />
         <AddFavouriteBtn
-          addToFavourites={selectedFeedback?.Favorites && selectedFeedback?.Favorites.length === 1 ? removeFromFavorites : addToFavourites}
-          isFavourite={selectedFeedback?.Favorites && selectedFeedback?.Favorites.length === 1}
+          addToFavourites={(isFavourite || selectedFeedback?.Favorites && selectedFeedback?.Favorites.length === 1) ? removeFromFavorites : addToFavourites}
+          isFavourite={isFavourite ? isFavourite : selectedFeedback?.Favorites && selectedFeedback?.Favorites.length === 1}
         />
       </div>
       <div className="my-5">
