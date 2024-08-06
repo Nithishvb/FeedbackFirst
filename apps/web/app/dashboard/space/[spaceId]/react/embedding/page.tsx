@@ -2,11 +2,29 @@
 
 import CodeBlock from "@/components/codeBlocks/CodeBlock";
 import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 const page = () => {
   const searchParams = useSearchParams();
   const selectedCode = searchParams.get("code");
   const selectedLayout = searchParams.get("layout");
+
+  useEffect(() => {
+    // Load the iframeResizer script dynamically
+    const script = document.createElement("script");
+    script.src = "";
+    script.async = true;
+    script.onload = () => {
+      // Initialize the iframeResizer once the script has loaded
+      iFrameResize({ log: false, checkOrigin: false }, "#");
+    };
+    document.body.appendChild(script);
+
+    // Cleanup function to remove the script when the component unmounts
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <div className="m-6">
@@ -17,6 +35,20 @@ const page = () => {
         <CodeBlock
           codeSnippet={getFeedbacksEmbeddings({ selectedCode, selectedLayout })}
         />
+      </div>
+      <div className="text-xl font-semibold my-6">Live Preview</div>
+      <div>
+        <iframe
+          id=""
+          src={
+            selectedLayout == "1"
+              ? "http://localhost:3000/embeddings/test-122/react/base"
+              : "http://localhost:3000/embeddings/test-122/react/scrollfeedback"
+          }
+          width="100%"
+          style={{ height: "700px", overflow: "auto" }} // Adjust height as needed
+          title="Testimonials"
+        ></iframe>
       </div>
     </div>
   );
